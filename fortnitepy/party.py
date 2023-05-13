@@ -3379,7 +3379,7 @@ class ClientParty(PartyBase, Patchable):
                 'pc': self.member_count,
             }
 
-        status = text or self.client.status
+        status = text or self.client.status or ''
         kairos_profile = self.client.avatar.to_dict()
 
         _default_status = {
