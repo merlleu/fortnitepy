@@ -3930,7 +3930,8 @@ class ClientParty(PartyBase, Patchable):
     async def set_playlist(self, playlist: Optional[str] = None,
                            tournament: Optional[str] = None,
                            event_window: Optional[str] = None,
-                           region: Optional[Region] = None) -> None:
+                           region: Optional[Region] = None,
+                           mnemonic: Optional[str] = None) -> None:
         """|coro|
 
         Sets the current playlist of the party.
@@ -3980,7 +3981,8 @@ class ClientParty(PartyBase, Patchable):
             playlist=playlist,
             tournament=tournament,
             event_window=event_window,
-            region=region
+            region=region,
+            mnemonic=mnemonic,
         )
         if not self.edit_lock.locked():
             return await self.patch(updated=prop)
