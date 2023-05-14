@@ -1102,6 +1102,9 @@ class PartyMeta(MetaBase):
                     'tournamentId': '',
                     'eventWindowId': '',
                     'regionId': 'EU',
+                    'linkId': {
+                        'mnemonic': 'playlist_defaultduo'
+                    }
                 },
             }),
             'Default:AthenaSquadFill_b': 'true',
@@ -1190,6 +1193,9 @@ class PartyMeta(MetaBase):
 
         if playlist is not None:
             data['playlistName'] = playlist
+            data['linkId'] = {
+                'mnemonic': playlist.lower()
+            }
         if tournament is not None:
             data['tournamentId'] = tournament
         if event_window is not None:
