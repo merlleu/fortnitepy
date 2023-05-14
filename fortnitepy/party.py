@@ -1188,20 +1188,24 @@ class PartyMeta(MetaBase):
     def set_playlist(self, playlist: Optional[str] = None, *,
                      tournament: Optional[str] = None,
                      event_window: Optional[str] = None,
-                     region: Optional[Region] = None) -> Dict[str, Any]:
+                     region: Optional[Region] = None,
+                     mnemonic: Optional[str] = None) -> Dict[str, Any]:
         data = (self.get_prop('Default:PlaylistData_j'))['PlaylistData']
 
         if playlist is not None:
             data['playlistName'] = playlist
-            data['linkId'] = {
-                'mnemonic': playlist.lower()
-            }
+        
         if tournament is not None:
             data['tournamentId'] = tournament
         if event_window is not None:
             data['eventWindowId'] = event_window
         if region is not None:
             data['regionId'] = region
+        
+        if mnemonic is not None:
+            data['linkId'] = {
+                'mnemonic': mnemonic
+            }
 
         final = {'PlaylistData': data}
         key = 'Default:PlaylistData_j'
