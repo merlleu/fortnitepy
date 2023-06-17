@@ -1418,6 +1418,13 @@ class XMPPClient:
         except ValueError:
             away = AwayStatus.ONLINE
 
+        self.client.dispatch_event('friend_presence_raw', {
+            'user_id': str(user_id),
+            'platform': str(platform),
+            'is_available': str(is_available),
+            'data': data
+        })
+
         _pres = Presence(
             self.client,
             user_id,
