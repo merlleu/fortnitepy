@@ -906,17 +906,14 @@ class Client:
                 self.auth.account_id,
                 priority=priority
             ),
-            self.http.account_graphql_get_clients_external_auths(
-                priority=priority
-            ),
             self.http.account_get_external_auths_by_id(
                 self.auth.account_id,
                 priority=priority
             ),
         ]
 
-        data, ext_data, extra_ext_data, *_ = await asyncio.gather(*tasks)
-        data['externalAuths'] = ext_data['myAccount']['externalAuths'] or []
+        data, extra_ext_data, *_ = await asyncio.gather(*tasks)
+        data['externalAuths'] = []
         data['extraExternalAuths'] = extra_ext_data
         self.user = ClientUser(self, data)
 
