@@ -174,6 +174,7 @@ class Platform(Enum):
     SWITCH        = 'SWT'
     IOS           = 'IOS'
     ANDROID       = 'AND'
+    SWT2          = 'SWT2'
 
 
 class UserSearchPlatform(Enum):
