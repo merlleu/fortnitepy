@@ -797,7 +797,7 @@ class PartyMemberMeta(MetaBase):
         return (bp_info['bHasPurchasedPass'],
                 bp_info['passLevel'],
                 bp_info.get('selfBoostXp', 0),
-                bp_info['friendBoostXp'])
+                bp_info.get('friendBoostXp',0))
 
     @property
     def platform(self) -> str:
